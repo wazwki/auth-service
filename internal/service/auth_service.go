@@ -4,7 +4,6 @@ import (
 	"auth-service/internal/model"
 	"auth-service/internal/repository"
 	"auth-service/pkg/jwt"
-	"auth-service/pkg/kafka"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -33,7 +32,6 @@ func (s *AuthService) SignUp(username, password string) error {
 		return err
 	}
 
-	kafka.ProduceMessage("user_signup", username)
 	return nil
 }
 
